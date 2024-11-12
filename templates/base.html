@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Dashboard{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <!-- Dashboard Container -->
+  <div class="dashboard-container">
+
+    <!-- Left Sidebar Menu -->
+    <aside class="sidebar">
+      <div class="logo">
+        <h2 class="peams-title">PEAMS</h2>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li><a href="{{ url_for('index') }}">Dashboard</a></li>
+          <li><a href="{{ url_for('products') }}">Products</a></li>
+          <li><a href="{{ url_for('alert_center') }}">Alert Center</a></li>
+          <li><a href="{{ url_for('notifications') }}">Notification</a></li>
+         
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="content-container">
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <h1>{% block page_title %}Dashboard{% endblock %}</h1>
+      </header>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        {% block content %}{% endblock %}
+      </main>
+    </div>
+  </div>
+</body>
+</html>

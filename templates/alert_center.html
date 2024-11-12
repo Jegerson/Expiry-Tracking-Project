@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Alert Center{% endblock %}
+
+{% block content %}
+  <h2>Alert Center</h2>
+  <table>
+      <thead>
+          <tr>
+              <th>Serial Number</th>
+              <th>Product Name</th>
+              <th>Expiry Date</th>
+              <th>Shelf Life (Days)</th>
+              <th>Alert (Days)</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for product in products %}
+          <tr>
+              <td>{{ loop.index }}</td>
+              <td>{{ product.name }}</td>
+              <td>{{ product.expiry_date }}</td>
+              <td>{{ (product.expiry_date - datetime.utcnow().date()).days if product.expiry_date else 'N/A' }}</td>
+              <td>{{ product.alert_days }}</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+{% endblock %}

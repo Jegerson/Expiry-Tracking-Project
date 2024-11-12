@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div id="dashboard-container">
+    <!-- Tile for Total Products -->
+    <div id="total-products-tile" class="tile">
+        <h2>Total Products</h2>
+        <p>{{ total_products }}</p>
+    </div>
+
+    <!-- Tile for Near Expiry Products -->
+    <div id="near-expiry-tile" class="tile">
+        <h2>Near Expiry</h2>
+        <p>{{ near_expiry_products }}</p>
+    </div>
+
+    <!-- Tile for Active Alerts -->
+    <div id="active-alerts-tile" class="tile">
+        <h2>Active Alerts</h2>
+        <p>{{ active_alerts }}</p>
+    </div>
+</div>
+
+<!-- Upcoming Alerts Section -->
+<div id="upcoming-alerts-section">
+    <h3>Upcoming Expiry Alerts</h3>
+    <ul>
+        {% for alert in upcoming_alerts %}
+            <li>{{ alert.product_name }} expires in {{ alert.days_left }} days ({{ alert.expiry_date }})</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Products{% endblock %}
+
+{% block content %}
+  <div id="product-form-container">
+    <h2 id="form-title">Add a Product</h2>
+    <form method="POST" id="product-form">
+      <label for="name">Product Name:</label>
+      <input type="text" id="name" name="name" required><br>
+
+      <label for="category">Category:</label>
+      <select id="category" name="category" required>
+        <option value="Dairy">Dairy</option>
+        <option value="Bakery">Bakery</option>
+        <option value="Beverages">Beverages</option>
+        <option value="Snacks">Snacks</option>
+        <option value="Canned Goods">Canned Goods</option>
+        <option value="Frozen Foods">Frozen Foods</option>
+        <option value="Personal Care">Personal Care</option>
+        <option value="Household">Household</option>
+      </select><br>
+
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" name="quantity" required><br>
+
+      <label for="expiry_date">Expiry Date:</label>
+      <input type="date" id="expiry_date" name="expiry_date" required><br>
+
+      <label for="alert_days">Alert (Days before expiry):</label>
+      <input type="number" id="alert_days" name="alert_days" required><br>
+
+      <button type="submit" id="submit-btn">Submit</button>
+    </form>
+  </div>
+
+  <div id="product-list-container">
+    <h2 id="list-title">Products List</h2>
+    <table id="product-table">
+      <thead>
+        <tr>
+          <th>Serial Number</th>
+          <th>Product Name</th>
+          <th>Category</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for product in products %}
+          <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.category }}</td>
+            <td>{{ product.quantity }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

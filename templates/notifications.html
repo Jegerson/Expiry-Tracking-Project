@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Notifications{% endblock %}
+
+{% block content %}
+  <h2>Notifications</h2>
+  <div class="notification-list">
+    {% for notification in notifications %}
+      <div class="notification-item">
+        <p><strong>{{ notification.product_name }}</strong></p>
+        <p>{{ notification.message }}</p>
+        <p><strong>{{ notification.days_left }} days left</strong></p>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
